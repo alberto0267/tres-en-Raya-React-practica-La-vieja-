@@ -51,32 +51,57 @@ function Square() {
   )
 }
 
-function Board() {
+// function Board() {
+//   return (
+//     <>
+//       <div className='xRow'>
+//         <SquareShort />
+//         <SquareShort />
+//         <SquareShort />
+//       </div>
+
+//       <div className='xRow'>
+//         <SquareShort />
+//         <SquareShort />
+//         <SquareShort />
+//       </div>
+
+//       <div className='xRow'>
+//         <SquareShort />
+//         <SquareShort />
+//         <SquareShort />
+//       </div>
+//     </>
+
+//   )
+
+// }
+
+function Board(){
+  const [squares, setSquares] = useState(Array(9).fill(null));
   return (
-    <>
-      <div className='xRow'>
-        <SquareShort />
-        <SquareShort />
-        <SquareShort />
-      </div>
-
-      <div className='xRow'>
-        <SquareShort />
-        <SquareShort />
-        <SquareShort />
-      </div>
-
-      <div className='xRow'>
-        <SquareShort />
-        <SquareShort />
-        <SquareShort />
-      </div>
-    </>
-
-  )
-
+        <>
+          <div className='xRow'>
+            <SquareShort />
+            <SquareShort />
+            <SquareShort />
+          </div>
+    
+          <div className='xRow'>
+            <SquareShort />
+            <SquareShort />
+            <SquareShort />
+          </div>
+    
+          <div className='xRow'>
+            <SquareShort />
+            <SquareShort />
+            <SquareShort />
+          </div>
+        </>
+    
+      )
 }
-
 
 function Game() {
 
