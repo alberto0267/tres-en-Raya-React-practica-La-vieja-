@@ -56,3 +56,12 @@
 .xRow{
   display: flex;
 }
+.status{
+  color: rgb(155, 10, 196);
+  font-weight: bold;
+}
+.ganador{
+  color:red;
+  font-size: 4rem;
+  
+}
