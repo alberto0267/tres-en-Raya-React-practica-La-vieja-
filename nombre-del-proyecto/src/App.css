@@ -63,5 +63,34 @@
 .ganador{
   color:red;
   font-size: 4rem;
-  
+
 }
+.game-info{
+  background-color: rgb(226, 43, 180);
+}
+
+.tittleOldWOman{
+  color: rgba(240, 239, 239, 0.95);
+  animation:shadows 2s infinite;
+ 
+}
+
+@keyframes shadows {
+  0% {
+    text-shadow: 0 0 10px red;
+    transform: rotateX(50deg) translateY(-100%);
+  }
+  25% {
+    text-shadow: 0 0 10px blue;
+  }
+  50% {
+    text-shadow: 0 0 10px green;
+  }
+  75% {
+    text-shadow: 0 0 10px yellow;
+  }
+  100% {
+    text-shadow: 0 0 10px red;
+  }
+}
+

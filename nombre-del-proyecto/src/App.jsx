@@ -75,7 +75,7 @@ function Square() {
 
 // }
 
-function Board() {
+ function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext]= useState(true);
   const winner = calculateWinner(squares);
@@ -153,16 +153,26 @@ function calculateWinner(squares) {
   }
   return null;
 }
-function Game() {
 
+
+
+function Game() {
+  const [xIsNext, setXIsNext] = useState(true);
+const [history , setHistory]=useState([Array(9).fill(null)]);
   return (
     <>
-      <h2>Tres en raya (La vieja) </h2>
+    {/* Añadir que estos se mueva, con traslate */}
+      <h2 className='tittleOldWOman'>Tres en raya (La vieja) </h2>
+      
 
-      <div>
+      <div className="game">
+      <div className="game-board">
         <Board />
-
       </div>
+      <div className="game-info">
+        <ol>{/*TODO*/}</ol>
+      </div>
+    </div>
     </>
 
   )
