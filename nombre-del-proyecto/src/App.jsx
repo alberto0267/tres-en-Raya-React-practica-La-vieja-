@@ -48,91 +48,114 @@ function Square() {
     </>
   )
 }
+function Board({ xIsNext, squares, onPlay }) {
 
-// function Board() {
+  function handleClick(i) {
+    if (calculateWinner(squares) || squares[i]) {
+      return;
+    }
+    const nextSquares = squares.slice();
+    if (xIsNext) {
+      nextSquares[i] = 'X';
+    } else {
+      nextSquares[i] = 'O';
+    }
+    onPlay(nextSquares);
+  }
+
+  const winner = calculateWinner(squares);
+  let status;
+  if (winner) {
+    status = 'Ganador: ' + winner;
+  } else {
+    status = 'Siguiente Jugador: ' + (xIsNext ? 'X' : 'O');
+  }
+
+  return (
+        <> 
+    
+        <div className='status'> {status} </div>
+        {/* <div className='ganador'> {ganador} </div> */}
+          <div className='xRow'>
+            <SquareShort value={squares[0]}  onSquareClick={ () => handleClick(0)} />
+            <SquareShort value={squares[1]} onSquareClick={ () => handleClick(1)}/>
+            <SquareShort value={squares[2]} onSquareClick={ () => handleClick(2)}/>
+          </div>
+    
+          <div className='xRow'>
+            <SquareShort value={squares[3]}onSquareClick={ () => handleClick(3)} />
+            <SquareShort value={squares[4]} onSquareClick={ () => handleClick(4)}/>
+            <SquareShort value={squares[5]}onSquareClick={ () => handleClick(5)} />
+          </div>
+    
+          <div className='xRow'>
+            <SquareShort value={squares[6]}onSquareClick={ () => handleClick(6)} />
+            <SquareShort value={squares[7]}onSquareClick={ () => handleClick(7)}/>
+            <SquareShort value={squares[8]} onSquareClick={ () => handleClick(8)}/>
+          </div>
+        </>
+    
+      )
+}
+// //Este boar funciona sin tener registro de lineas de tiempo
+//  function Board( ) {
+//   const [squares, setSquares] = useState(Array(9).fill(null));
+//   const [xIsNext, setXIsNext]= useState(true);
+//   const winner = calculateWinner(squares);
+//   let status;
+//   let ganador;
+//   if(winner){
+//     status = "Ganador" + winner;
+//     // ganador = "Ganador"+ winner;
+//   }else{
+//     status = "Siguiente es jugar es = " + (xIsNext?"X" :"O");
+//   }
+//   function handleClick(i){
+   
+
+// if(squares[i] || calculateWinner(squares)){
+//   return;
+// }
+//  const newSquares = squares.slice();
+// //     Este seria con puras X, o mejor dicho solo un valor.
+// //     const newSquares = squares.slice();
+// // newSquares[i] = "X";
+// // setSquares(newSquares);
+// if (xIsNext){
+//   newSquares[i] = "X";
+// } else{
+//   newSquares[i] = "O";
+// }
+// setSquares(newSquares);
+// setXIsNext(!xIsNext);
+//   }
+
 //   return (
-//     <>
+//     <> 
+
+//     <div className='status'> {status} </div>
+//     {/* <div className='ganador'> {ganador} </div> */}
 //       <div className='xRow'>
-//         <SquareShort />
-//         <SquareShort />
-//         <SquareShort />
+//         <SquareShort value={squares[0]}  onSquareClick={ () => handleClick(0)} />
+//         <SquareShort value={squares[1]} onSquareClick={ () => handleClick(1)}/>
+//         <SquareShort value={squares[2]} onSquareClick={ () => handleClick(2)}/>
 //       </div>
 
 //       <div className='xRow'>
-//         <SquareShort />
-//         <SquareShort />
-//         <SquareShort />
+//         <SquareShort value={squares[3]}onSquareClick={ () => handleClick(3)} />
+//         <SquareShort value={squares[4]} onSquareClick={ () => handleClick(4)}/>
+//         <SquareShort value={squares[5]}onSquareClick={ () => handleClick(5)} />
 //       </div>
 
 //       <div className='xRow'>
-//         <SquareShort />
-//         <SquareShort />
-//         <SquareShort />
+//         <SquareShort value={squares[6]}onSquareClick={ () => handleClick(6)} />
+//         <SquareShort value={squares[7]}onSquareClick={ () => handleClick(7)}/>
+//         <SquareShort value={squares[8]} onSquareClick={ () => handleClick(8)}/>
 //       </div>
 //     </>
 
 //   )
-
 // }
-
- function Board() {
-  const [squares, setSquares] = useState(Array(9).fill(null));
-  const [xIsNext, setXIsNext]= useState(true);
-  const winner = calculateWinner(squares);
-  let status;
-  let ganador;
-  if(winner){
-    status = "Ganador" + winner;
-    // ganador = "Ganador"+ winner;
-  }else{
-    status = "Siguiente es jugar es = " + (xIsNext?"X" :"O");
-  }
-  function handleClick(i){
-   
-
-if(squares[i] || calculateWinner(squares)){
-  return;
-}
- const newSquares = squares.slice();
-//     Este seria con puras X, o mejor dicho solo un valor.
-//     const newSquares = squares.slice();
-// newSquares[i] = "X";
-// setSquares(newSquares);
-if (xIsNext){
-  newSquares[i] = "X";
-} else{
-  newSquares[i] = "O";
-}
-setSquares(newSquares);
-setXIsNext(!xIsNext);
-  }
-
-  return (
-    <> 
-
-    <div className='status'> {status} </div>
-    {/* <div className='ganador'> {ganador} </div> */}
-      <div className='xRow'>
-        <SquareShort value={squares[0]}  onSquareClick={ () => handleClick(0)} />
-        <SquareShort value={squares[1]} onSquareClick={ () => handleClick(1)}/>
-        <SquareShort value={squares[2]} onSquareClick={ () => handleClick(2)}/>
-      </div>
-
-      <div className='xRow'>
-        <SquareShort value={squares[3]}onSquareClick={ () => handleClick(3)} />
-        <SquareShort value={squares[4]} onSquareClick={ () => handleClick(4)}/>
-        <SquareShort value={squares[5]}onSquareClick={ () => handleClick(5)} />
-      </div>
-
-      <div className='xRow'>
-        <SquareShort value={squares[6]}onSquareClick={ () => handleClick(6)} />
-        <SquareShort value={squares[7]}onSquareClick={ () => handleClick(7)}/>
-        <SquareShort value={squares[8]} onSquareClick={ () => handleClick(8)}/>
-      </div>
-    </>
-
-  )
-}
 
 function calculateWinner(squares) {
   const lines = [
@@ -159,6 +182,38 @@ function calculateWinner(squares) {
 function Game() {
   const [xIsNext, setXIsNext] = useState(true);
 const [history , setHistory]=useState([Array(9).fill(null)]);
+const [currentMove, setCurrentMove] = useState(0);
+const currentSquares = history[currentMove];
+
+function handlePlay(nextSquares) {
+  const nextHistory = [...history.slice(0, currentMove + 1), nextSquares];
+  setHistory(nextHistory);
+  setCurrentMove(nextHistory.length - 1);
+  setXIsNext(!xIsNext);
+}
+
+function jumpTo(nextMove){
+  setCurrentMove(nextMove);
+  setXIsNext(nextMove % 2 === 0);
+}
+
+const moves = history.map((squares,move) =>{
+
+  let description;
+
+  if(move > 0){
+    description = "Go to Move # " + move;
+  }else{
+    description = "Reiniciar";
+  }
+  return(
+    <li key= {move}>
+    <button  onClick={() => jumpTo(move)}>{description}</button>
+    </li>
+  )
+
+});
+
   return (
     <>
     {/* Añadir que estos se mueva, con traslate */}
@@ -167,10 +222,10 @@ const [history , setHistory]=useState([Array(9).fill(null)]);
 
       <div className="game">
       <div className="game-board">
-        <Board />
+      <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} />
       </div>
       <div className="game-info">
-        <ol>{/*TODO*/}</ol>
+        <ol className='moves' >{moves}</ol>
       </div>
     </div>
     </>

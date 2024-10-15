@@ -65,9 +65,7 @@
   font-size: 4rem;
 
 }
-.game-info{
-  background-color: rgb(226, 43, 180);
-}
+
 
 .tittleOldWOman{
   color: rgba(240, 239, 239, 0.95);
@@ -78,7 +76,7 @@
 @keyframes shadows {
   0% {
     text-shadow: 0 0 10px red;
-    transform: rotateX(50deg) translateY(-100%);
+    transform: rotateX(75deg) translateY(-100%) ;
   }
   25% {
     text-shadow: 0 0 10px blue;
@@ -94,3 +92,7 @@
   }
 }
 
+.moves {
+  background-color: #88888800;
+  color: aqua;
+}
